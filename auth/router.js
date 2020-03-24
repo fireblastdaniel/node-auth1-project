@@ -39,7 +39,7 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/logout', (req, res) => {
+router.delete('/logout', (req, res) => {
   console.log(req.session);
   if (req.session) {
     req.session.destroy(error => {
@@ -53,20 +53,6 @@ router.get('/logout', (req, res) => {
   } else {
     res.end();
     // res.status(200).json({ message: 'Already logged out' });
-  }
-});
-
-router.get('/users', (req, res) => {
-  if (req.session) {
-    Users.find()
-      .then(users => res.status(200).json(users))
-      .catch(err =>
-        res
-          .status(500)
-          .json({ message: 'There was an error retrieving the user list' })
-      );
-  } else {
-    res.status(401).json({ message: 'Please login to view this content' });
   }
 });
 

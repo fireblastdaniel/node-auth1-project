@@ -17,7 +17,7 @@ const sessionConfig = {
     httpOnly: true
   },
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 };
 
 server.use(express.json());
